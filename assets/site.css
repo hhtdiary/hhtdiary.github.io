@@ -161,6 +161,13 @@ a { color: inherit; }
 .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .btn.primary:hover { transform: translateY(-1px); }
 .btn .arr { transition: transform .15s; }
+.store-badge { display: inline-flex; align-items: center; border-radius: 12px; transition: transform .15s; }
+.store-badge img { display: block; height: 46px; width: auto; }
+.store-badge:hover { transform: translateY(-1px); }
+.store-badge:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+.store-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 26px; }
+.s-hero.center .store-row { justify-content: center; }
+.store-note { margin: 0; font: 500 13px var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--mint); }
 .btn:hover .arr { transform: translateX(3px); }
 .link { color: var(--mint); font-weight: 550; text-decoration: none; }
 .link:hover { text-decoration: underline; text-underline-offset: 4px; }
