@@ -320,3 +320,14 @@ a.card { text-decoration: none; display: block; color: inherit; }
   .grid.four > a.card:last-child { border-bottom: 0; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+
+/* ── App Store badge ───────────────────────────────────── */
+.store-badge { display: inline-flex; align-items: center; transition: transform .12s; }
+.store-badge img { display: block; height: 48px; width: auto; }
+.store-badge:hover { transform: translateY(-1px); }
+.store-badge:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
+.store-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 22px; }
+.s-hero .store-row { grid-area: store; }
+.s-hero .wrap:has(.store-row) { grid-template-areas: "eb eb" "h1 h1" "lede note" "acts note" "store note"; }
+@media (max-width: 900px) { .s-hero .wrap:has(.store-row) { grid-template-areas: "eb" "h1" "lede" "acts" "store" "note"; } }
+.store-note { margin: 0; font: 400 13px var(--m); letter-spacing: .04em; text-transform: uppercase; color: var(--ink2); }
