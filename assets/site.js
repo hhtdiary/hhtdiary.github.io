@@ -54,7 +54,7 @@ function currentPath() {
 }
 
 function brandLink() {
-  return `<span class="s-brand"><a href="${url(BRAND.home)}"><img src="${url(BRAND.logo)}" alt="" width="28" height="28">${BRAND.name}</a></span>`;
+  return `<a class="brand" href="${url(BRAND.home)}"><img src="${url(BRAND.logo)}" alt="" width="34" height="34">${BRAND.name}</a>`;
 }
 
 function buildHeader() {
@@ -63,26 +63,21 @@ function buildHeader() {
   const local = BRAND.nav.filter(n => !/^https?:/.test(n.href));
   const current = local.find(n => n.href === here) || local.find(n => n.prefix && here.startsWith(n.href));
   const h = document.createElement('header');
-  h.className = 's-header';
+  h.className = 'top';
   h.innerHTML = `
     <a class="skip" href="#main">Skip to content</a>
-    <div class="wrap">
-      ${brandLink()}
-      <nav class="s-nav" id="site-nav" aria-label="Main">
-        ${BRAND.nav.map(n => `<a href="${url(n.href)}"${n === current ? ' aria-current="page"' : ''}>${n.title}</a>`).join('')}
-      </nav>
-      <div class="s-tools">
-        <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">${ICONS.moon}${ICONS.sun}</button>
-        <button class="icon-btn menu-btn" type="button" aria-label="Open navigation" aria-controls="site-nav" aria-expanded="false">${ICONS.menu}</button>
-      </div>
+    ${brandLink()}
+    <nav id="site-nav" aria-label="Main">
+      <ul class="dg">
+        ${BRAND.nav.map(n => `<li><a href="${url(n.href)}"${n === current ? ' aria-current="page"' : ''}>${n.title}</a></li>`).join('')}
+      </ul>
+    </nav>
+    <div class="tools">
+      <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">${ICONS.moon}${ICONS.sun}</button>
     </div>`;
   document.body.prepend(h);
 
-  const menu = h.querySelector('.menu-btn');
-  menu.addEventListener('click', () => {
-    const open = document.body.classList.toggle('nav-open');
-    menu.setAttribute('aria-expanded', String(open));
-  });
+  // The navigation is a line diagram that stays visible at every width, so it needs no menu button.
   h.querySelector('.theme-btn').addEventListener('click', () => {
     const root = document.documentElement;
     const dark = root.dataset.theme
@@ -97,8 +92,8 @@ function buildFooter() {
   const f = document.createElement('footer');
   f.className = 's-footer';
   f.innerHTML = `
-    <div class="wrap">
-      <div class="cols" style="--n: ${BRAND.footer.length}">
+    <div>
+      <div class="fc">
         <div class="about">
           ${brandLink()}
           <p>${BRAND.blurb}</p>
@@ -108,7 +103,7 @@ function buildFooter() {
             ${g.items.map(i => `<li><a href="${url(i.href)}">${i.title}</a></li>`).join('')}
           </ul></div>`).join('')}
       </div>
-      <div class="base"><span>${BRAND.base}</span><span>Every trip tells a story.</span></div>
+      <div class="fb"><span>${BRAND.base}</span><span>Every trip tells a story.</span></div>
     </div>`;
   document.body.append(f);
 }
