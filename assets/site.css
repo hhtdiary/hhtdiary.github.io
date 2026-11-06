@@ -331,3 +331,8 @@ a.card { text-decoration: none; display: block; color: inherit; }
 .s-hero .wrap:has(.store-row) { grid-template-areas: "eb eb" "h1 h1" "lede note" "acts note" "store note"; }
 @media (max-width: 900px) { .s-hero .wrap:has(.store-row) { grid-template-areas: "eb" "h1" "lede" "acts" "store" "note"; } }
 .store-note { margin: 0; font: 400 13px var(--m); letter-spacing: .04em; text-transform: uppercase; color: var(--ink2); }
+/* TripLibre app icon beside TripLibre headings */
+.app-title { display: flex; align-items: center; gap: .32em; }
+.app-icon { display: block; flex: none; width: .9em; height: .9em; border-radius: 22.5%; box-shadow: 0 1px 2px color-mix(in oklab, var(--ink) 18%, transparent); }
+.store-note:has(.app-icon) { display: inline-flex; align-items: center; gap: 10px; }
+.app-icon.sm { width: 36px; height: 36px; }
